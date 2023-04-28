@@ -22,6 +22,7 @@ const mer = [
     description: "Дом",
   },
 ];
+
 const coords = [];
 
 ymaps.ready(init);

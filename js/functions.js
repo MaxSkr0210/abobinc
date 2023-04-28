@@ -36,7 +36,8 @@ const addGeo = (map) => {
         },
         {
           iconLayout: "default#image",
-          iconImageHref: "images/admin.png",
+          iconImageHref: "images/самовар2.png",
+          iconImageSize: [23, 25],
         }
       );
       map.geoObjects.add(newGeo);
