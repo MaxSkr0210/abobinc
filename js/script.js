@@ -10,14 +10,17 @@ const deleteControls = [
 
 const mer = [
   {
+    id: 1,
     geo: "Тула, пр. Ленина, 92",
     description: "Тулгу",
   },
   {
+    id: 2,
     geo: "Тула, Галкина, 237",
     description: "Квартира",
   },
   {
+    id: 3,
     geo: "Тульская область, муниципальное образование Тула, деревня Ивановка, Крестьянская улица, 6",
     description: "Дом",
   },
@@ -27,7 +30,6 @@ const coords = [];
 
 ymaps.ready(init);
 
-// Дождёмся загрузки API и готовности DOM.
 function init() {
   const geolocation = ymaps.geolocation;
   myMap = new ymaps.Map(
@@ -64,7 +66,12 @@ input.addEventListener("input", () => {
       list.removeChild(list.firstChild);
     }
     mer.forEach((geo) => {
-      addElement("div", "search__list__item", list, geo.geo);
+      addElement(
+        "div",
+        `class=search__list__item, id=${geo.id}`,
+        list,
+        geo.geo
+      );
     });
     return;
   }
@@ -73,6 +80,21 @@ input.addEventListener("input", () => {
     list.removeChild(list.firstChild);
   }
   searchedEl.forEach((geo) => {
-    addElement("div", "search__list__item", list, geo.geo);
+    addElement("div", "class=search__list__item, id=${geo.id}", list, geo.geo);
   });
 });
+
+setTimeout(() => {
+  const items = document.querySelectorAll(".search__list__item");
+  items.forEach((item) => {
+    item.addEventListener("click", () => {
+      const id = item.getAttribute("id");
+      console.log(id);
+      coords.forEach((geo) => {
+        if (geo.id === Number(id)) {
+          myMap.setCenter(geo.cords);
+        }
+      });
+    });
+  });
+}, 200);

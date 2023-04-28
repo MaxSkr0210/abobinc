@@ -47,4 +47,5 @@ input {
 .search__list__item {
   text-align: center;
   margin-top: 10px;
+  cursor: pointer;
 }

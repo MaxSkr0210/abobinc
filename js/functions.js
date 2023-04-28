@@ -1,7 +1,11 @@
 //Добавление элемента на страницу
-const addElement = (elem, cl, parrent, data = "") => {
+const addElement = (elem, attrs, parrent, data = "") => {
   const el = document.createElement(elem);
-  el.className = cl;
+  const attrsArr = attrs.split(", ");
+  attrsArr.forEach((attr) => {
+    const [attrName, attrValue] = attr.split("=");
+    el.setAttribute(attrName, attrValue);
+  });
   if (data.trim() !== "") {
     el.innerText = data;
   }
@@ -24,11 +28,11 @@ const findGeo = (name) => {
 //Добавить гео точку
 const addGeo = (map) => {
   mer.forEach((geo) => {
-    addElement("div", "search__list__item", list, geo.geo);
+    addElement("div", `class=search__list__item, id=${geo.id}`, list, geo.geo);
     ymaps.geocode(geo.geo).then((res) => {
       var firstGeoObject = res.geoObjects.get(0);
       var cords = firstGeoObject.geometry.getCoordinates();
-      coords.push(cords);
+      coords.push({ id: geo.id, cords });
       const newGeo = new ymaps.Placemark(
         cords,
         {
