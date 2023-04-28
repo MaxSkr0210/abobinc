@@ -1,5 +1,12 @@
 let myMap;
 
+const deleteControls = [
+  "trafficControl",
+  "searchControl",
+  "scaleLine",
+  "typeSelector",
+];
+
 const mer = [
   {
     geo: "Тула, пр. Ленина, 92",
@@ -27,11 +34,11 @@ const addGeo = (map) => {
       const newGeo = new ymaps.Placemark(
         cords,
         {
-          balloonContent: "цвет <strong>воды пляжа бонди</strong>",
+          balloonContent: geo.description,
         },
         {
-          preset: "islands#icon",
-          iconColor: "#0095b6",
+          iconLayout: "default#image",
+          iconImageHref: "images/admin.png",
         }
       );
       map.geoObjects.add(newGeo);
@@ -56,6 +63,10 @@ function init() {
     }
   );
 
+  deleteControls.forEach((control) => {
+    myMap.controls.remove(control);
+  });
+
   addGeo(myMap);
 
   geolocation
@@ -65,7 +76,8 @@ function init() {
     })
     .then(function (result) {
       result.geoObjects.options.set("preset", "islands#redCircleIcon");
-      const coords = result.geoObjects;
-      myMap.geoObjects.add(coords);
+      const ourCoords = result.geoObjects;
+      myMap.geoObjects.add(ourCoords);
+      //   ymaps.formmater.distance(ymaps.coordSystem.geo.getDistance(moscowCoords, newYorkCoords))
     });
 }
