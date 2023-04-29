@@ -28,6 +28,8 @@ const mer = [
 
 const coords = [];
 
+const myMer = [];
+
 ymaps.ready(init);
 
 function init() {
@@ -46,6 +48,7 @@ function init() {
     myMap.controls.remove(control);
   });
   addGeo(myMap);
+  console.log(coords);
   geolocation
     .get({
       provider: "browser",
@@ -55,6 +58,15 @@ function init() {
       result.geoObjects.options.set("preset", "islands#redCircleIcon");
       const ourCoords = result.geoObjects;
       myMap.geoObjects.add(ourCoords);
+
+      console.log(123);
+
+      coords.forEach((cord) => {
+        console.log(123);
+        ymaps.route([ourCoords, cord.cords]).done((res) => {
+          console.log(res.getHumanLength());
+        });
+      });
     });
 }
 
@@ -68,7 +80,7 @@ input.addEventListener("input", () => {
     mer.forEach((geo) => {
       addElement(
         "div",
-        `class=search__list__item, id=${geo.id}`,
+        `class=search__list__item, id=${geo.id}, ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
         list,
         geo.geo
       );
@@ -80,21 +92,72 @@ input.addEventListener("input", () => {
     list.removeChild(list.firstChild);
   }
   searchedEl.forEach((geo) => {
-    addElement("div", "class=search__list__item, id=${geo.id}", list, geo.geo);
+    addElement(
+      "div",
+      `class=search__list__item, id=${geo.id}, , ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
+      list,
+      geo.geo
+    );
   });
 });
 
-setTimeout(() => {
-  const items = document.querySelectorAll(".search__list__item");
-  items.forEach((item) => {
-    item.addEventListener("click", () => {
-      const id = item.getAttribute("id");
-      console.log(id);
-      coords.forEach((geo) => {
-        if (geo.id === Number(id)) {
-          myMap.setCenter(geo.cords);
-        }
-      });
-    });
+const slide = document.querySelector("#slide");
+const slideContainer = document.querySelector("#search");
+
+//mobile
+
+function selectItem(i) {
+  const id = Number(i);
+  console.log(coords);
+  coords.forEach((geo) => {
+    if (geo.id === Number(id)) {
+      myMap.setCenter(geo.cords);
+    }
   });
-}, 200);
+}
+
+slideContainer.addEventListener("touchmove", (e) => {
+  var touchLocation = e.targetTouches[0];
+  slideContainer.style.top = touchLocation.pageY - 670 + "px";
+  const num = slideContainer.style.top.replace("px", "");
+  console.log(num);
+  if (Number(num) < -250) {
+    slideContainer.style.top = "-500px";
+  }
+});
+
+//desctop
+slide.onmousedown = (e) => {
+  let coords = getCoords(slideContainer);
+  var shiftY = e.pageY - coords.top;
+  function moveAt(e) {
+    slideContainer.style.top = e.pageY - shiftY - 610 + "px";
+    const num = slideContainer.style.top.replace("px", "");
+    console.log(num);
+    if (Number(num) < -350) {
+      slideContainer.style.top = "-630px";
+    }
+  }
+
+  document.onmousemove = function (e) {
+    moveAt(e);
+  };
+
+  slideContainer.onmouseup = function () {
+    document.onmousemove = null;
+    slide.onmouseup = null;
+  };
+};
+
+function getCoords(elem) {
+  // кроме IE8-
+  var box = elem.getBoundingClientRect();
+  return {
+    top: box.top + pageYOffset,
+    left: box.left + pageXOffset,
+  };
+}
+
+slide.ondragstart = function () {
+  return false;
+};

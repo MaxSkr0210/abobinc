@@ -4,7 +4,7 @@ const addElement = (elem, attrs, parrent, data = "") => {
   const attrsArr = attrs.split(", ");
   attrsArr.forEach((attr) => {
     const [attrName, attrValue] = attr.split("=");
-    el.setAttribute(attrName, attrValue);
+    el.setAttribute(attrName, attrValue.replaceAll('"', ""));
   });
   if (data.trim() !== "") {
     el.innerText = data;
@@ -28,7 +28,12 @@ const findGeo = (name) => {
 //Добавить гео точку
 const addGeo = (map) => {
   mer.forEach((geo) => {
-    addElement("div", `class=search__list__item, id=${geo.id}`, list, geo.geo);
+    addElement(
+      "div",
+      `class=search__list__item, id=${geo.id}, ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
+      list,
+      geo.geo
+    );
     ymaps.geocode(geo.geo).then((res) => {
       var firstGeoObject = res.geoObjects.get(0);
       var cords = firstGeoObject.geometry.getCoordinates();
@@ -46,5 +51,6 @@ const addGeo = (map) => {
       );
       map.geoObjects.add(newGeo);
     });
+    console.log(coords);
   });
 };

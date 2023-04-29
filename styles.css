@@ -1,7 +1,17 @@
+* {
+  user-select: none;
+}
+
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
 }
 
 a,
@@ -18,19 +28,28 @@ a {
   position: relative;
 }
 
-/* #menu * {
-  position: absolute;
-  left: 50%;
-  top: 15px;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-} */
-
 #search {
   width: 100%;
   margin-top: 10px;
+  position: absolute;
+  top: -150px;
+  height: 1000px;
+  background: #fff;
+  border: none;
+  border-radius: 60px 60px 0 0;
+  transition: 0.15s;
 }
 
+#slide {
+  padding: 15px;
+}
+.slide {
+  width: 60px;
+  margin: 10px auto;
+  border: 3px solid silver;
+  border-radius: 8px;
+  cursor: pointer;
+}
 input {
   display: block;
   margin-left: auto;
