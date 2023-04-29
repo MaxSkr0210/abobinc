@@ -61,12 +61,9 @@
         let id = swiper.realIndex + 1;
         selectItem(id);
         swiper.on("slideChange", function () {
-          for (let i = 0; i < swiperSlides.length; i++) {
-            const el = swiperSlides[i];
-
-            id = swiper.realIndex + 1;
-            selectItem(id);
-          }
+          id = swiper.realIndex + 1;
+          console.log(id);
+          selectItem(id);
         });
       }, 1000);
     </script>
