@@ -29,18 +29,7 @@
         </div>
         <input type="text" placeholder="Поиск места" />
         <div class="swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">Slide 1</div>
-            <div class="swiper-slide">Slide 2</div>
-            <div class="swiper-slide">Slide 3</div>
-            <div class="swiper-slide">Slide 4</div>
-            <div class="swiper-slide">Slide 5</div>
-            <div class="swiper-slide">Slide 6</div>
-            <div class="swiper-slide">Slide 7</div>
-            <div class="swiper-slide">Slide 8</div>
-            <div class="swiper-slide">Slide 9</div>
-            <div class="swiper-slide">Slide 10</div>
-          </div>
+          <div class="swiper-wrapper"></div>
           <!-- Add Pagination -->
           <div class="swiper-pagination"></div>
           <div class="swiper-button-next"></div>
@@ -59,27 +48,29 @@
       // })();
     </script>
 
-    <script type="module">
+    <script>
       // import Swiper from "https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.esm.browser.min.js";
       // import "swiper/swiper-bundle.css";
-      var swiper = new Swiper(".swiper", {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        freeMode: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
+      setTimeout(() => {
+        var swiper = new Swiper(".swiper", {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          freeMode: false,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+      }, 200);
     </script>
     <style>
       .swiper {
-        width: 800px;
-        height: 150px;
+        width: 80%;
+        height: 20%;
       }
 
       .swiper-slide {

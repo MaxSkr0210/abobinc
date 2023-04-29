@@ -1,5 +1,5 @@
 let myMap;
-const list = document.querySelector("#search__list");
+const list = document.querySelector(".swiper-wrapper");
 
 const deleteControls = [
   "trafficControl",
@@ -97,7 +97,7 @@ input.addEventListener("input", () => {
     mer.forEach((geo) => {
       addElement(
         "div",
-        `class=search__list__item, id=${geo.id}, ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
+        `class=swiper-slide, id=${geo.id}, ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
         list,
         geo.description
       );
@@ -111,7 +111,7 @@ input.addEventListener("input", () => {
   searchedEl.forEach((geo) => {
     addElement(
       "div",
-      `class=search__list__item, id=${geo.id}, , ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
+      `class=swiper-slide, id=${geo.id}, , ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
       list,
       geo.description
     );

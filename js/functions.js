@@ -1,15 +1,15 @@
 //Добавление элемента на страницу
 const addElement = (elem, attrs, parrent, data = "") => {
-  // const el = document.createElement(elem);
-  // const attrsArr = attrs.split(", ");
-  // attrsArr.forEach((attr) => {
-  //   const [attrName, attrValue] = attr.split("=");
-  //   el.setAttribute(attrName, attrValue.replaceAll('"', ""));
-  // });
-  // if (data.trim() !== "") {
-  //   el.innerText = data;
-  // }
-  // parrent.appendChild(el);
+  const el = document.createElement(elem);
+  const attrsArr = attrs.split(", ");
+  attrsArr.forEach((attr) => {
+    const [attrName, attrValue] = attr.split("=");
+    el.setAttribute(attrName, attrValue.replaceAll('"', ""));
+  });
+  if (data.trim() !== "") {
+    el.innerText = data;
+  }
+  parrent.appendChild(el);
 };
 
 //Найти мероприятия
@@ -30,7 +30,7 @@ const addGeo = (map) => {
   mer.forEach((geo) => {
     addElement(
       "div",
-      `class=search__list__item, id=${geo.id}, ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
+      `class=swiper-slide, id=${geo.id}, ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
       list,
       geo.description
     );
