@@ -16,7 +16,7 @@
       const TG = window.Telegram.WebApp;
 
       const getEvents = async () => {
-        const res = await fetch("https://45.12.238.37:3000/events");
+        const res = await fetch("http://45.12.238.37:3000/events");
         const data = await res.json();
         return data;
       };
@@ -37,7 +37,7 @@
         <div id="slide">
           <div class="cross">
             <svg
-              fill="silver"
+              fill="#fcc45d"
               height="23px"
               width="23px"
               version="1.1"
@@ -59,7 +59,66 @@
         </div>
         <input type="text" placeholder="Поиск места" />
         <div class="swiper">
-          <div class="swiper-wrapper"></div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="card">
+                <div class="header">
+                  <div class="mid">
+                    <!-- <img src="./images/Picture_event.png" alt="" /> -->
+                    <div class="info">
+                      <h1>Ночь музеев</h1>
+                      <div class="date">
+                        <img src="./images/Calendar.png" alt="картинка" /> Май
+                        20 | 22.00-03.00
+                        <img src="./images/Local.png" alt="картинка" />
+                        Тульский музей оружия
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="body">
+                  <div class="mid">
+                    <div class="priceAndSubs">
+                      <div class="price">
+                        <span class="pr gray small">Цена</span>
+                        <p>
+                          <span class="gold big">500₽</span
+                          ><span class="gray">-700₽</span>
+                        </p>
+                      </div>
+                      <div class="subs">
+                        <span class="gray small">Участники</span>
+                      </div>
+                    </div>
+                    <div class="event">
+                      <div class="rating">
+                        <p>Тульский музей оружия</p>
+                        <div class="gold" style="font-size: 11px">
+                          <img src="./images/gold_locations.png" alt="" />
+                          Тула
+                          <img src="./images/start.png" alt="" />
+                          25 мероприятий
+                        </div>
+                      </div>
+                      <div class="subsribe">
+                        <button class="btn">Подписаться</button>
+                      </div>
+                    </div>
+                    <div class="description">
+                      Международная акция, приуроченная к Международному дню
+                      музеев, во время которой можно осмотреть музейные
+                      экспозиции ночью. В эту ночь многие музеи открыты для
+                      посетителей после захода солнца и почти до утра.
+                      <span>Подробнее</span>
+                    </div>
+                    <div class="mainButton">
+                      <button class="btn">Купить билеты</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Add Pagination -->
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
@@ -75,10 +134,9 @@
           slidesPerView: 1,
           spaceBetween: 30,
           freeMode: false,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
+          observer: true,
+          observeSlideChildren: true,
+          observeParents: true,
           navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
@@ -91,8 +149,17 @@
           id = swiper.realIndex + 1;
           selectItem(id);
         });
-        swiper.on("update", () => {
-          swiper;
+        swiper.on("update", async () => {
+          // await swiper.destroy();
+          // swiper = new Swiper(".swiper", {
+          //   slidesPerView: 1,
+          //   spaceBetween: 30,
+          //   freeMode: false,
+          //   navigation: {
+          //     nextEl: ".swiper-button-next",
+          //     prevEl: ".swiper-button-prev",
+          //   },
+          // });
         });
       }, 1000);
     </script>
@@ -101,7 +168,7 @@
     <style>
       .swiper {
         width: 80%;
-        height: 20%;
+        height: 530px;
       }
 
       .swiper-slide {
