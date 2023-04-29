@@ -1,15 +1,9 @@
 //Добавление элемента на страницу
-const addElement = (elem, attrs, parrent, data = "") => {
-  const el = document.createElement(elem);
-  const attrsArr = attrs.split(", ");
-  attrsArr.forEach((attr) => {
-    const [attrName, attrValue] = attr.split("=");
-    el.setAttribute(attrName, attrValue.replaceAll('"', ""));
-  });
-  if (data.trim() !== "") {
-    el.innerText = data;
-  }
-  parrent.appendChild(el);
+const addElement = (data) => {
+  const el = document.createElement("div");
+  el.className = "swiper-slide";
+  el.innerText = data.event_name;
+  list.appendChild(el);
 };
 
 //Найти мероприятия
@@ -28,20 +22,15 @@ const findGeo = (name) => {
 //Добавить гео точку
 const addGeo = (map, mer) => {
   mer.forEach((geo) => {
-    addElement(
-      "div",
-      `class=swiper-slide, id=${geo.id}, ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
-      list,
-      geo.description
-    );
-    ymaps.geocode(geo.geo).then((res) => {
+    addElement(geo);
+    ymaps.geocode(geo.address).then((res) => {
       var firstGeoObject = res.geoObjects.get(0);
       var cords = firstGeoObject.geometry.getCoordinates();
       coords.push({ id: geo.id, cords });
       const newGeo = new ymaps.Placemark(
         cords,
         {
-          balloonContent: geo.description,
+          balloonContent: geo.event_name,
         },
         {
           iconLayout: "default#image",
@@ -49,6 +38,11 @@ const addGeo = (map, mer) => {
           iconImageSize: [23, 25],
         }
       );
+
+      newGeo.events.add("click", function () {
+        alert("О, событие!");
+      });
+
       map.geoObjects.add(newGeo);
     });
   });

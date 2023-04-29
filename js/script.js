@@ -8,43 +8,11 @@ const deleteControls = [
   "typeSelector",
 ];
 
-const mer = [
-  {
-    id: 1,
-    geo: "Тула, пр. Ленина, 92",
-    description: "Тулгу",
-  },
-  {
-    id: 2,
-    geo: "Тула, Галкина, 237",
-    description: "Квартира",
-  },
-  {
-    id: 3,
-    geo: "Тула, Центральный переулок, 18",
-    description: "Октава",
-  },
-  {
-    id: 4,
-    geo: "Октябрьская улица, 2",
-    description: "Музей оружия",
-  },
-  {
-    id: 5,
-    geo: "Тула, Менделеевская улица, 8",
-    description: "Тульский самовар",
-  },
-  {
-    id: 6,
-    geo: "Тула, Советская улица, 96",
-    description: "Тульский цирк",
-  },
-  {
-    id: 7,
-    geo: "Тула, проспект Ленина, 34А",
-    description: "Театр драмы им. М. Горького",
-  },
-];
+let mer;
+(async function () {
+  mer = await getEvents();
+  console.log(mer);
+})();
 
 const coords = [];
 
