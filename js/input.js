@@ -27,8 +27,12 @@ arrow.addEventListener("click", () => {
   }
 });
 
-const btn = document.querySelector(".subBtn");
-btn.addEventListener("click", async () => {
-  const id = Number(btn.getAttribute("id"));
-  TG.sendData(JSON.stringify(mer[id]));
-});
+setTimeout(() => {
+  const btns = document.querySelectorAll(".subBtn");
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = Number(btn.getAttribute("id"));
+      TG.sendData(JSON.stringify(mer[id]));
+    });
+  });
+}, 500);
