@@ -45,11 +45,11 @@ a {
   position: relative;
 }
 
-.cross img {
-  width: 20px;
+#bottom_arrow {
   position: relative;
   left: 30px;
-  top: 5px;
+  top: 2px;
+  cursor: pointer;
 }
 
 .slide {

@@ -34,6 +34,15 @@ input.addEventListener("input", () => {
   });
 });
 
+const search = document.querySelector("#search");
+const arrow = document.querySelector("#bottom_arrow");
+arrow.addEventListener("click", () => {
+  const top = Number(search.style.top.replace("px", ""));
+  if (top < -350) {
+    search.style.top = -150 + "px";
+  }
+});
+
 document.querySelector(".btn").addEventListener("click", () => {
   TG.sendData("Мы победим нахой");
 });
