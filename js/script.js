@@ -81,13 +81,15 @@ function init() {
     })
     .then(function (result) {
       result.geoObjects.options.set("preset", "islands#redCircleIcon");
+
       const ourCoords = result.geoObjects;
       myMap.geoObjects.add(ourCoords);
-      console.log(ourCoords.position);
+
       const circle = new ymaps.Circle([ourCoords.position, 5000], null, {
         fillColor: "#DB709377",
         strokeColor: "#990066",
       });
+
       circle.events.add("drag", function () {
         var objectsInsideCircle = objects.searchInside(circle);
         objectsInsideCircle.setOptions("preset", "twirl#greenIcon");

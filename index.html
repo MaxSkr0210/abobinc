@@ -16,7 +16,7 @@
       const TG = window.Telegram.WebApp;
 
       const getEvents = async () => {
-        const res = await fetch("http://45.12.238.37:3000/events");
+        const res = await fetch("http://localhost:3000/events");
         const data = await res.json();
         return data;
       };
@@ -28,7 +28,6 @@
     <div id="menu">
       <div id="filters">
         <div class="filters__item">
-          <!-- <img src="" alt="" />  -->
           <span>Всё</span>
         </div>
       </div>
