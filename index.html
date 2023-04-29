@@ -40,15 +40,6 @@
     <script src="./js/functions.js"></script>
     <script src="./js/script.js"></script>
     <script>
-      // (async function () {
-      //   const res = await fetch("http://80.78.207.160:8000/ping");
-      //   const data = await res;
-      //   console.log(data);
-      //   // 80.78.207.160:8080
-      // })();
-    </script>
-
-    <script>
       // import Swiper from "https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.esm.browser.min.js";
       // import "swiper/swiper-bundle.css";
       setTimeout(() => {
@@ -65,7 +56,19 @@
             prevEl: ".swiper-button-prev",
           },
         });
-      }, 200);
+        const swiperSlides = document.querySelectorAll(".swiper-slide");
+        console.log(swiperSlides);
+        let id = swiper.realIndex + 1;
+        selectItem(id);
+        swiper.on("slideChange", function () {
+          for (let i = 0; i < swiperSlides.length; i++) {
+            const el = swiperSlides[i];
+
+            id = swiper.realIndex + 1;
+            selectItem(id);
+          }
+        });
+      }, 1000);
     </script>
     <style>
       .swiper {
