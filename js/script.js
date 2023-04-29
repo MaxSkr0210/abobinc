@@ -12,8 +12,9 @@ let mer;
 (async function () {
   mer = await getEvents();
 })();
-
-ymaps.ready(init);
+setTimeout(() => {
+  ymaps.ready(init);
+}, 300);
 
 const coords = [];
 
