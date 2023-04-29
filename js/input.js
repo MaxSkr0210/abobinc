@@ -30,5 +30,5 @@ arrow.addEventListener("click", () => {
 document.querySelector(".subBtn").addEventListener("click", async () => {
   const data = await getEvents();
 
-  TG.sendData(data);
+  TG.sendData(JSON.stringify(data));
 });
