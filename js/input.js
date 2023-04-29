@@ -27,8 +27,8 @@ arrow.addEventListener("click", () => {
   }
 });
 
-document.querySelector(".subBtn").addEventListener("click", async () => {
-  const data = await getEvents();
-  console.log(data);
-  TG.sendData(JSON.stringify(data));
+const btn = document.querySelector(".subBtn");
+btn.addEventListener("click", async () => {
+  const id = Number(btn.getAttribute("id"));
+  TG.sendData(JSON.stringify(mer[id]));
 });

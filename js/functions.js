@@ -3,7 +3,12 @@ const addElement = (data) => {
   const el = document.createElement("div");
   el.className = "swiper-slide";
   el.innerText = data.event_name;
+  const button = document.createElement("button");
+  button.setAttribute("id", data.id - 1);
   list.appendChild(el);
+  button.innerText = "Подписаться";
+  button.className = "btn subBtn";
+  el.appendChild(button);
 };
 
 //Найти мероприятия
