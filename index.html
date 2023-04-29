@@ -26,13 +26,12 @@
   <body>
     <div id="map" style="width: 100%; height: 80%"></div>
     <div id="menu">
-      <button class="btn">click</button>
-      <!-- <div id="filters">
+      <div id="filters">
         <div class="filters__item">
-          <img src="" alt=""> 
-           <span>Всё</span>
-        <div>
-      </div> -->
+          <!-- <img src="" alt="" />  -->
+          <span>Всё</span>
+        </div>
+      </div>
       <div id="search">
         <div id="slide">
           <div class="cross">
@@ -64,7 +63,6 @@
               <div class="card">
                 <div class="header">
                   <div class="mid">
-                    <!-- <img src="./images/Picture_event.png" alt="" /> -->
                     <div class="info">
                       <h1>Ночь музеев</h1>
                       <div class="date">
@@ -101,7 +99,7 @@
                         </div>
                       </div>
                       <div class="subsribe">
-                        <button class="btn">Подписаться</button>
+                        <button class="btn subBtn">Подписаться</button>
                       </div>
                     </div>
                     <div class="description">
@@ -119,7 +117,6 @@
               </div>
             </div>
           </div>
-          <!-- Add Pagination -->
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
         </div>
@@ -148,18 +145,6 @@
         swiper.on("slideChange", function () {
           id = swiper.realIndex + 1;
           selectItem(id);
-        });
-        swiper.on("update", async () => {
-          // await swiper.destroy();
-          // swiper = new Swiper(".swiper", {
-          //   slidesPerView: 1,
-          //   spaceBetween: 30,
-          //   freeMode: false,
-          //   navigation: {
-          //     nextEl: ".swiper-button-next",
-          //     prevEl: ".swiper-button-prev",
-          //   },
-          // });
         });
       }, 1000);
     </script>

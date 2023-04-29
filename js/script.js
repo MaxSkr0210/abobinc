@@ -53,12 +53,18 @@ const myMer = [];
 ymaps.ready(init);
 
 function init() {
+  const geolocationControl = new ymaps.control.GeolocationControl({
+    options: {
+      float: "right",
+    },
+  });
   const geolocation = ymaps.geolocation;
   myMap = new ymaps.Map(
     "map",
     {
       center: [55.76, 37.64], // Москва
       zoom: 10,
+      controls: [geolocationControl],
     },
     {
       searchControlProvider: "yandex#search",
@@ -67,7 +73,7 @@ function init() {
   deleteControls.forEach((control) => {
     myMap.controls.remove(control);
   });
-  // addGeo(myMap, mer);
+  addGeo(myMap, mer);
   geolocation
     .get({
       provider: "browser",
@@ -77,12 +83,19 @@ function init() {
       result.geoObjects.options.set("preset", "islands#redCircleIcon");
       const ourCoords = result.geoObjects;
       myMap.geoObjects.add(ourCoords);
-
-      coords.forEach((cord) => {
-        ymaps.route([ourCoords, cord.cords]).done((res) => {
-          console.log(res.getHumanLength());
-        });
+      console.log(ourCoords.position);
+      const circle = new ymaps.Circle([ourCoords.position, 5000], null, {
+        fillColor: "#DB709377",
+        strokeColor: "#990066",
       });
+      circle.events.add("drag", function () {
+        var objectsInsideCircle = objects.searchInside(circle);
+        objectsInsideCircle.setOptions("preset", "twirl#greenIcon");
+        objects
+          .remove(objectsInsideCircle)
+          .setOptions("preset", "twirl#blueIcon");
+      });
+      myMap.geoObjects.add(circle);
     });
 }
 
