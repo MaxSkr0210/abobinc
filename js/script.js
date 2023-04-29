@@ -79,10 +79,7 @@ function init() {
       const ourCoords = result.geoObjects;
       myMap.geoObjects.add(ourCoords);
 
-      console.log(123);
-
       coords.forEach((cord) => {
-        console.log(123);
         ymaps.route([ourCoords, cord.cords]).done((res) => {
           console.log(res.getHumanLength());
         });
@@ -102,7 +99,7 @@ input.addEventListener("input", () => {
         "div",
         `class=search__list__item, id=${geo.id}, ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
         list,
-        geo.geo
+        geo.description
       );
     });
     return;
@@ -116,7 +113,7 @@ input.addEventListener("input", () => {
       "div",
       `class=search__list__item, id=${geo.id}, , ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
       list,
-      geo.geo
+      geo.description
     );
   });
 });

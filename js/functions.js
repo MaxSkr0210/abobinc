@@ -1,15 +1,15 @@
 //Добавление элемента на страницу
 const addElement = (elem, attrs, parrent, data = "") => {
-  const el = document.createElement(elem);
-  const attrsArr = attrs.split(", ");
-  attrsArr.forEach((attr) => {
-    const [attrName, attrValue] = attr.split("=");
-    el.setAttribute(attrName, attrValue.replaceAll('"', ""));
-  });
-  if (data.trim() !== "") {
-    el.innerText = data;
-  }
-  parrent.appendChild(el);
+  // const el = document.createElement(elem);
+  // const attrsArr = attrs.split(", ");
+  // attrsArr.forEach((attr) => {
+  //   const [attrName, attrValue] = attr.split("=");
+  //   el.setAttribute(attrName, attrValue.replaceAll('"', ""));
+  // });
+  // if (data.trim() !== "") {
+  //   el.innerText = data;
+  // }
+  // parrent.appendChild(el);
 };
 
 //Найти мероприятия
@@ -17,7 +17,7 @@ const findGeo = (name) => {
   const arr = [];
 
   mer.forEach((geo) => {
-    if (geo.geo.indexOf(name) >= 0) {
+    if (geo.description.indexOf(name) >= 0) {
       arr.push(geo);
     }
   });
@@ -32,7 +32,7 @@ const addGeo = (map) => {
       "div",
       `class=search__list__item, id=${geo.id}, ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
       list,
-      geo.geo
+      geo.description
     );
     ymaps.geocode(geo.geo).then((res) => {
       var firstGeoObject = res.geoObjects.get(0);
