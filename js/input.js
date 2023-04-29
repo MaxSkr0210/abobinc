@@ -35,5 +35,5 @@ input.addEventListener("input", () => {
 });
 
 document.querySelector(".btn").addEventListener("click", () => {
-  TG.sendData("123");
+  TG.sendData("Мы победим нахой");
 });

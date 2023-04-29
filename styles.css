@@ -42,13 +42,27 @@ a {
 
 #slide {
   padding: 15px;
+  position: relative;
 }
+
+.cross img {
+  width: 20px;
+  position: relative;
+  left: 30px;
+  top: 5px;
+}
+
 .slide {
   width: 60px;
   margin: 10px auto;
   border: 3px solid silver;
   border-radius: 8px;
   cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 input {
   display: block;
