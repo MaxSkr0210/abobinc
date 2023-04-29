@@ -13,9 +13,7 @@ let mer;
   mer = await getEvents();
 })();
 
-setTimeout(() => {
-  ymaps.ready(init);
-}, 500);
+ymaps.ready(init);
 
 const coords = [];
 

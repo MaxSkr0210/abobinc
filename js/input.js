@@ -28,11 +28,11 @@ arrow.addEventListener("click", () => {
 });
 
 setTimeout(() => {
-  const btns = document.querySelectorAll(".subBtn");
+  const btns = document.querySelectorAll(".btn.subBtn");
   btns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = Number(btn.getAttribute("id"));
       TG.sendData(JSON.stringify(mer[id]));
     });
   });
-}, 500);
+}, 1000);
