@@ -34,6 +34,6 @@ input.addEventListener("input", () => {
   });
 });
 
-document.querySelector("btn").addEventListener("click", () => {
+document.querySelector(".btn").addEventListener("click", () => {
   TG.sendData("123");
 });
