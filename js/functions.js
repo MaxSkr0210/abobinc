@@ -1,14 +1,57 @@
 //Добавление элемента на страницу
 const addElement = (data) => {
-  const el = document.createElement("div");
-  el.className = "swiper-slide";
-  el.innerText = data.event_name;
-  const button = document.createElement("button");
-  button.setAttribute("id", data.id - 1);
-  list.appendChild(el);
-  button.innerText = "Подписаться";
-  button.className = "btn subBtn";
-  el.appendChild(button);
+  const [date_start, time_start] = data.start_date.split("T");
+  const [date_end, time_end] = data.end_date.split("T");
+  const template = `
+  <div class="swiper-slide">
+  <div class="card">
+    <div class="header" style="background-image: url(${data.img});">
+      <div class="mid">
+        <div class="info">
+          <h1>${data.event_name}</h1>
+          <div class="date">
+            <img src="./images/Calendar.png" alt="картинка" />
+            ${date_start} | ${time_start}-${time_end}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="mid">
+        <div class="priceAndSubs">
+          <div class="price">
+            <span class="pr gray small">Цена</span>
+            <p>
+              <span class="gold big">${data.price}₽</span
+              >
+            </p>
+          </div>
+        </div>
+        <div class="event">
+          <div class="rating">
+            <p>${data.event_name}</p>
+            <div class="gold" style="font-size: 11px">
+              <img src="./images/gold_locations.png" alt="" />
+              Тула
+              <img src="./images/start.png" alt="" />
+              25 мероприятий
+            </div>
+          </div>
+          <div class="subsribe">
+            <button class="btn subBtn">Подписаться</button>
+          </div>
+        </div>
+        <div class="description">
+          ${data.description}
+        </div>
+        <div class="mainButton">
+          <button class="btn">Купить билеты</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
+  list.innerHTML += template;
 };
 
 //Найти мероприятия
