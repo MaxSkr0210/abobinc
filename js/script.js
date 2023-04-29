@@ -67,8 +67,7 @@ function init() {
   deleteControls.forEach((control) => {
     myMap.controls.remove(control);
   });
-  addGeo(myMap);
-  console.log(coords);
+  addGeo(myMap, mer);
   geolocation
     .get({
       provider: "browser",
@@ -87,37 +86,6 @@ function init() {
     });
 }
 
-const input = document.querySelector("input");
-input.addEventListener("input", () => {
-  const data = input.value;
-  if (data.trim() === "") {
-    while (list.firstChild) {
-      list.removeChild(list.firstChild);
-    }
-    mer.forEach((geo) => {
-      addElement(
-        "div",
-        `class=swiper-slide, id=${geo.id}, ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
-        list,
-        geo.description
-      );
-    });
-    return;
-  }
-  const searchedEl = findGeo(data);
-  while (list.firstChild) {
-    list.removeChild(list.firstChild);
-  }
-  searchedEl.forEach((geo) => {
-    addElement(
-      "div",
-      `class=swiper-slide, id=${geo.id}, , ontouchend=selectItem(${geo.id}), onclick=selectItem(${geo.id})`,
-      list,
-      geo.description
-    );
-  });
-});
-
 const slide = document.querySelector("#slide");
 const slideContainer = document.querySelector("#search");
 
@@ -125,7 +93,6 @@ const slideContainer = document.querySelector("#search");
 
 function selectItem(i) {
   const id = Number(i);
-  console.log(coords);
   coords.forEach((geo) => {
     if (geo.id === Number(id)) {
       myMap.setCenter(geo.cords);
@@ -137,7 +104,6 @@ slide.addEventListener("touchmove", (e) => {
   var touchLocation = e.targetTouches[0];
   slideContainer.style.top = touchLocation.pageY - 670 + "px";
   const num = slideContainer.style.top.replace("px", "");
-  console.log(num);
   if (Number(num) < -250) {
     slideContainer.style.top = "-500px";
   }
@@ -150,7 +116,6 @@ slide.onmousedown = (e) => {
   function moveAt(e) {
     slideContainer.style.top = e.pageY - shiftY - 610 + "px";
     const num = slideContainer.style.top.replace("px", "");
-    console.log(num);
     if (Number(num) < -350) {
       slideContainer.style.top = "-630px";
     }

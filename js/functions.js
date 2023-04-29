@@ -26,7 +26,7 @@ const findGeo = (name) => {
 };
 
 //Добавить гео точку
-const addGeo = (map) => {
+const addGeo = (map, mer) => {
   mer.forEach((geo) => {
     addElement(
       "div",
@@ -51,6 +51,5 @@ const addGeo = (map) => {
       );
       map.geoObjects.add(newGeo);
     });
-    console.log(coords);
   });
 };

@@ -12,11 +12,15 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=9b791e7f-8637-4534-a2da-fcaaa9bb443c&lang=ru_RU"></script>
+    <script>
+      const TG = window.Telegram.WebApp;
+    </script>
     <title>Abob Inc.</title>
   </head>
   <body>
     <div id="map" style="width: 100%; height: 80%"></div>
     <div id="menu">
+      <button class=".btn">click</button>
       <!-- <div id="filters">
         <div class="filters__item">
           <img src="" alt=""> 
@@ -40,10 +44,9 @@
     <script src="./js/functions.js"></script>
     <script src="./js/script.js"></script>
     <script>
-      // import Swiper from "https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.esm.browser.min.js";
-      // import "swiper/swiper-bundle.css";
+      let swiper;
       setTimeout(() => {
-        var swiper = new Swiper(".swiper", {
+        swiper = new Swiper(".swiper", {
           slidesPerView: 1,
           spaceBetween: 30,
           freeMode: false,
@@ -57,16 +60,19 @@
           },
         });
         const swiperSlides = document.querySelectorAll(".swiper-slide");
-        console.log(swiperSlides);
         let id = swiper.realIndex + 1;
         selectItem(id);
         swiper.on("slideChange", function () {
           id = swiper.realIndex + 1;
-          console.log(id);
           selectItem(id);
+        });
+        swiper.on("update", () => {
+          swiper;
         });
       }, 1000);
     </script>
+    <script src="./js/input.js"></script>
+
     <style>
       .swiper {
         width: 80%;
