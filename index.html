@@ -14,6 +14,12 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=9b791e7f-8637-4534-a2da-fcaaa9bb443c&lang=ru_RU"></script>
     <script>
       const TG = window.Telegram.WebApp;
+
+      const getEvents = async () => {
+        const res = await fetch("https://localhost:3000/events");
+        const data = await res.json();
+        return data;
+      };
     </script>
     <title>Abob Inc.</title>
   </head>
@@ -55,7 +61,6 @@
         <div class="swiper">
           <div class="swiper-wrapper"></div>
           <!-- Add Pagination -->
-          <div class="swiper-pagination"></div>
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
         </div>

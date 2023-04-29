@@ -43,6 +43,8 @@ arrow.addEventListener("click", () => {
   }
 });
 
-document.querySelector(".btn").addEventListener("click", () => {
-  TG.sendData("Мы победим нахой");
+document.querySelector(".btn").addEventListener("click", async () => {
+  const data = await getEvents();
+
+  TG.sendData(JSON.stringify(data));
 });
