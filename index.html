@@ -28,5 +28,13 @@
     </div>
     <script src="./js/functions.js"></script>
     <script src="./js/script.js"></script>
+    <script>
+      (async function () {
+        const res = await fetch("http://80.78.207.160:8000/ping");
+        const data = await res;
+        console.log(data);
+        // 80.78.207.160:8080
+      })();
+    </script>
   </body>
 </html>
