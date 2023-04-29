@@ -16,7 +16,7 @@
       const TG = window.Telegram.WebApp;
 
       const getEvents = async () => {
-        const res = await fetch("https://localhost:3000/events");
+        const res = await fetch("https://80.78.207.152/events");
         const data = await res.json();
         return data;
       };
