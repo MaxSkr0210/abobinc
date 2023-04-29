@@ -9,8 +9,10 @@ const deleteControls = [
 ];
 
 let mer;
+let categories;
 (async function () {
-  mer = await getEvents();
+  mer = await getEvents("events");
+  categories = await getEvents("categories");
 })();
 setTimeout(() => {
   ymaps.ready(init);
