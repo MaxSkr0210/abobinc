@@ -11,14 +11,15 @@ const deleteControls = [
 let mer;
 (async function () {
   mer = await getEvents();
-  console.log(mer);
 })();
+
+setTimeout(() => {
+  ymaps.ready(init);
+}, 500);
 
 const coords = [];
 
 const myMer = [];
-
-ymaps.ready(init);
 
 function init() {
   const geolocationControl = new ymaps.control.GeolocationControl({
