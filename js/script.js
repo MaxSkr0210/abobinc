@@ -133,7 +133,7 @@ function selectItem(i) {
   });
 }
 
-slideContainer.addEventListener("touchmove", (e) => {
+slide.addEventListener("touchmove", (e) => {
   var touchLocation = e.targetTouches[0];
   slideContainer.style.top = touchLocation.pageY - 670 + "px";
   const num = slideContainer.style.top.replace("px", "");
