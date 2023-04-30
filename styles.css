@@ -33,7 +33,7 @@ a {
 }
 
 #radius {
-  position: relative;
+  /* position: relative; */
   bottom: 55px;
   display: flex;
   width: 80%;

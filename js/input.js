@@ -11,7 +11,6 @@ input.addEventListener("input", async () => {
     addGeo(myMap, a);
     return;
   }
-  await swiper.update();
   const searchedEl = findGeo(data);
   while (list.firstChild) {
     list.removeChild(list.firstChild);
@@ -52,5 +51,7 @@ items.forEach((item, index) => {
         myMer.push(m);
       }
     });
+    myMap.geoObjects.removeAll();
+    addGeo(myMap, myMer);
   });
 });

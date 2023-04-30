@@ -104,10 +104,10 @@ slide.onmousedown = (e) => {
   var shiftY = e.pageY - coords.top;
   function moveAt(e) {
     slideContainer.style.top = e.pageY - shiftY - 610 + "px";
-    radius.style.top = e.pageY - shiftY - 610 + "px";
+    radius.style.top = e.pageY - shiftY - 620 + "px";
     const num = slideContainer.style.top.replace("px", "");
     if (Number(num) < -350) {
-      slideContainer.style.top = "-630px";
+      slideContainer.style.top = "-600px";
     }
   }
 
