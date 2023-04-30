@@ -38,4 +38,23 @@ setTimeout(() => {
   });
 }, 2000);
 
-setTimeout(() => {}, 2000);
+const items = document.querySelectorAll(".radius_item");
+items.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    const c = circle.geometry._coordinates;
+    circle.geometry.setRadius(Number(items[index].innerText));
+    coords.forEach((m) => {
+      if (
+        ymaps.coordSystem.geo.getDistance(c, m.cords) <
+        Number(items[index].innerText)
+      ) {
+        myMer.push(m);
+      }
+    });
+    if (Number(items[index].innerText) > 1000) {
+      mer.forEach((m) => {
+        addElement(m);
+      });
+    }
+  });
+});
