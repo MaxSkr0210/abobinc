@@ -51,6 +51,8 @@ items.forEach((item, index) => {
         myMer.push(m);
       }
     });
-    addGeo(myMap, myMer);
+    if (Number(items[index].innerText) > 200) {
+      addGeo(myMap, mer);
+    }
   });
 });

@@ -44,7 +44,7 @@ function init() {
   deleteControls.forEach((control) => {
     myMap.controls.remove(control);
   });
-  addGeo(myMap, mer);
+  // addGeo(myMap, mer);
   geolocation
     .get({
       provider: "browser",
