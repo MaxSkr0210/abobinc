@@ -7,7 +7,8 @@ input.addEventListener("input", async () => {
     while (list.firstChild) {
       list.removeChild(list.firstChild);
     }
-    addGeo(myMap, mer);
+
+    addGeo(myMap, a);
     return;
   }
   await swiper.update();
@@ -15,6 +16,7 @@ input.addEventListener("input", async () => {
   while (list.firstChild) {
     list.removeChild(list.firstChild);
   }
+
   addGeo(myMap, searchedEl);
 });
 
@@ -35,4 +37,20 @@ setTimeout(() => {
       TG.sendData(JSON.stringify(mer[id]));
     });
   });
-}, 1000);
+}, 2000);
+
+const items = document.querySelectorAll(".radius_item");
+items.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    const c = circle.geometry._coordinates;
+    circle.geometry.setRadius(items[index].innerText);
+    coords.forEach((m) => {
+      if (
+        ymaps.coordSystem.geo.getDistance(c, m.cords) <
+        Number(items[index].innerText)
+      ) {
+        myMer.push(m);
+      }
+    });
+  });
+});

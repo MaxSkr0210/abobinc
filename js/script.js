@@ -1,4 +1,5 @@
 let myMap;
+let circle;
 const list = document.querySelector(".swiper-wrapper");
 
 const deleteControls = [
@@ -55,25 +56,27 @@ function init() {
       const ourCoords = result.geoObjects;
       myMap.geoObjects.add(ourCoords);
 
-      const circle = new ymaps.Circle([ourCoords.position, 5000], null, {
+      circle = new ymaps.Circle([ourCoords.position, 200], null, {
         fillColor: "#DB709377",
         strokeColor: "#990066",
       });
 
-      circle.events.add("drag", function () {
-        var objectsInsideCircle = objects.searchInside(circle);
-        objectsInsideCircle.setOptions("preset", "twirl#greenIcon");
-        objects
-          .remove(objectsInsideCircle)
-          .setOptions("preset", "twirl#blueIcon");
-      });
       myMap.geoObjects.add(circle);
+      const c = circle.geometry._coordinates;
+      coords.forEach((m) => {
+        if (
+          ymaps.coordSystem.geo.getDistance(c, m.cords) <
+          Number(items[index].innerText)
+        ) {
+          myMer.push(m);
+        }
+      });
     });
 }
 
 const slide = document.querySelector("#slide");
 const slideContainer = document.querySelector("#search");
-
+const radius = document.querySelector("#radius");
 //mobile
 
 function selectItem(i) {
@@ -88,6 +91,7 @@ function selectItem(i) {
 slide.addEventListener("touchmove", (e) => {
   var touchLocation = e.targetTouches[0];
   slideContainer.style.top = touchLocation.pageY - 670 + "px";
+  radius.style.top = touchLocation.pageY - 670 + "px";
   const num = slideContainer.style.top.replace("px", "");
   if (Number(num) < -250) {
     slideContainer.style.top = "-500px";
@@ -100,6 +104,7 @@ slide.onmousedown = (e) => {
   var shiftY = e.pageY - coords.top;
   function moveAt(e) {
     slideContainer.style.top = e.pageY - shiftY - 610 + "px";
+    radius.style.top = e.pageY - shiftY - 610 + "px";
     const num = slideContainer.style.top.replace("px", "");
     if (Number(num) < -350) {
       slideContainer.style.top = "-630px";

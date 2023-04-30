@@ -24,8 +24,28 @@ a {
   text-decoration: none;
 }
 
+.swiper-wrapper {
+  /* transition-duration: 1000ms; */
+}
+
 #menu {
   position: relative;
+}
+
+#radius {
+  position: relative;
+  bottom: 55px;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.radius_item {
+  background: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 13px;
 }
 
 #search {
