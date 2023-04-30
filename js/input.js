@@ -42,7 +42,7 @@ const items = document.querySelectorAll(".radius_item");
 items.forEach((item, index) => {
   item.addEventListener("click", () => {
     const c = circle.geometry._coordinates;
-    circle.geometry.setRadius(items[index].innerText);
+    circle.geometry.setRadius(Number(items[index].innerText));
     coords.forEach((m) => {
       if (
         ymaps.coordSystem.geo.getDistance(c, m.cords) <
@@ -51,7 +51,6 @@ items.forEach((item, index) => {
         myMer.push(m);
       }
     });
-    myMap.geoObjects.removeAll();
     addGeo(myMap, myMer);
   });
 });
