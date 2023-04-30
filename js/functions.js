@@ -70,7 +70,7 @@ const findGeo = (name) => {
 //Добавить гео точку
 const addGeo = (map, mer) => {
   mer.forEach((geo) => {
-    addElement(geo);
+    // addElement(geo);
     ymaps.geocode(geo.address).then((res) => {
       var firstGeoObject = res.geoObjects.get(0);
       var cords = firstGeoObject.geometry.getCoordinates();
