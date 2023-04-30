@@ -28,15 +28,7 @@ arrow.addEventListener("click", () => {
   }
 });
 
-setTimeout(() => {
-  const btns = document.querySelectorAll(".btn.subBtn");
-  btns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const id = Number(btn.getAttribute("id"));
-      TG.sendData(JSON.stringify(mer[id]));
-    });
-  });
-}, 2000);
+setTimeout(() => {}, 1000);
 
 const items = document.querySelectorAll(".radius_item");
 items.forEach((item, index) => {
@@ -54,6 +46,13 @@ items.forEach((item, index) => {
     if (Number(items[index].innerText) > 1000) {
       mer.forEach((m) => {
         addElement(m);
+      });
+      const btns = document.querySelectorAll(".btn.subBtn");
+      btns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = Number(btn.getAttribute("id"));
+          TG.sendData(JSON.stringify(mer[id]));
+        });
       });
     }
   });
