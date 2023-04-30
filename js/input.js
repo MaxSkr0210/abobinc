@@ -37,7 +37,7 @@ setTimeout(() => {
       TG.sendData(JSON.stringify(mer[id]));
     });
   });
-}, 2000);
+}, 1000);
 
 const items = document.querySelectorAll(".radius_item");
 items.forEach((item, index) => {
