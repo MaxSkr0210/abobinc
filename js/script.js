@@ -58,6 +58,22 @@ function init() {
     },
   });
   const geolocation = ymaps.geolocation;
+  myMap = new ymaps.Map(
+    "map",
+    {
+      center: [55.76, 37.64], // Москва
+      zoom: 10,
+      controls: [geolocationControl],
+    },
+    {
+      searchControlProvider: "yandex#search",
+    }
+  );
+  map = myMap;
+
+  deleteControls.forEach((control) => {
+    myMap.controls.remove(control);
+  });
 
   geolocation
     .get({
@@ -86,23 +102,6 @@ function init() {
         }
       });
     });
-
-  myMap = new ymaps.Map(
-    "map",
-    {
-      center: ourCoords, // Москва
-      zoom: 10,
-      controls: [geolocationControl],
-    },
-    {
-      searchControlProvider: "yandex#search",
-    }
-  );
-  map = myMap;
-
-  deleteControls.forEach((control) => {
-    myMap.controls.remove(control);
-  });
 }
 
 const slide = document.querySelector("#slide");
