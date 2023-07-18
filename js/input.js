@@ -67,17 +67,21 @@ items.forEach((item, index) => {
   });
 });
 
-document.querySelector(".click").addEventListener("click", () => {
+document.querySelector("").addEventListener("click", () => {
   TG.sendData("test1");
 });
 
-const btns = document.querySelectorAll(".btn.subBtn");
-btns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const id = Number(btn.getAttribute("id"));
-    console.log(mer[id]);
-    console.log(TG);
-    console.log(TG.sendData);
-    TG.sendData("click test");
-  });
+document.querySelector(".btn.subBtn").addEventListener("click", () => {
+  TG.sendData("click test");
 });
+
+// const btns = document.querySelectorAll(".btn.subBtn");
+// btns.forEach((btn) => {
+//   btn.addEventListener("click", () => {
+//     const id = Number(btn.getAttribute("id"));
+//     console.log(mer[id]);
+//     console.log(TG);
+//     console.log(TG.sendData);
+//     TG.sendData("click test");
+//   });
+// });
