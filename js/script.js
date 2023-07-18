@@ -24,7 +24,7 @@ let mer = [
   // },
   {
     id: 1,
-    event_name: "Лецкия Савина",
+    event_name: "Лекция Савина",
     description: "БЕГИТЕ ГЛУПЦЫ",
     price: 1000,
     address: "проспект Ленина, 92, Тула, 300012",
@@ -45,11 +45,6 @@ let mer = [
 ];
 
 let categories;
-// (async function () {
-//   mer = await getEvents("events");
-//   categories = await getEvents("categories");
-// })();
-setTimeout(() => {}, 300);
 
 const coords = [];
 
