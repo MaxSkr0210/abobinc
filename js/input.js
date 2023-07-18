@@ -74,10 +74,15 @@ items.forEach((item, index) => {
         btn.addEventListener("click", () => {
           const id = Number(btn.getAttribute("id"));
           console.log(mer[id]);
+          console.log(TG);
           console.log(TG.sendData);
           TG.sendData("test");
         });
       });
     }
   });
+});
+
+document.querySelector(".click").addEventListener("click", () => {
+  TG.sendData("test");
 });
