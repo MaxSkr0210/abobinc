@@ -28,8 +28,6 @@ arrow.addEventListener("click", () => {
   }
 });
 
-setTimeout(() => {}, 1000);
-
 const items = document.querySelectorAll(".radius_item");
 items.forEach((item, index) => {
   item.addEventListener("click", () => {
@@ -76,7 +74,7 @@ items.forEach((item, index) => {
         btn.addEventListener("click", () => {
           const id = Number(btn.getAttribute("id"));
           console.log(mer[id]);
-          console.log(TG);
+          console.log(TG.sendData);
           TG.sendData(JSON.stringify(mer[id]));
         });
       });
