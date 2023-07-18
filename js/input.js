@@ -67,7 +67,7 @@ items.forEach((item, index) => {
   });
 });
 
-document.querySelector("").addEventListener("click", () => {
+document.querySelector(".click").addEventListener("click", () => {
   TG.sendData("test1");
 });
 
