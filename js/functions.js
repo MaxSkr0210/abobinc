@@ -73,7 +73,7 @@ const addElement = (data) => {
             </div>
           </div>
           <div class="subsribe">
-            <button class="btn subBtn" class="asd">Подписаться</button>
+            <button class="btn subBtn" id="${data.id}">Подписаться</button>
           </div>
         </div>
         <div class="description">
@@ -94,8 +94,12 @@ const addElement = (data) => {
   //   TG.sendData("click test");
   // });
 
-  document.querySelector(".subBtn").addEventListener("click", () => {
-    console.log("asd");
-    TG.sendData("click test");
+  const btns = document.querySelectorAll(".subBtn");
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("id");
+      TG.sendData(mer[id]);
+    });
   });
 };
