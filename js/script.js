@@ -17,7 +17,7 @@ let mer = [
     event_name: "Событие",
     description: "dfgsdfgsdgsdfg",
     price: 200,
-    address: "Литейная улица, 8, Тула, 300002",
+    address: "Советская улица, 13А, Тула, 300041",
     img: "https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg",
     start_date: "15.06.2023T14:55",
     end_date: "15.06.2023T14:55",
