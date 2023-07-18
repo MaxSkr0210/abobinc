@@ -76,6 +76,7 @@ items.forEach((item, index) => {
         btn.addEventListener("click", () => {
           const id = Number(btn.getAttribute("id"));
           console.log(mer[id]);
+          console.log(TG);
           TG.sendData(JSON.stringify(mer[id]));
         });
       });
