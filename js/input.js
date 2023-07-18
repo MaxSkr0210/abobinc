@@ -71,7 +71,8 @@ document.querySelector("").addEventListener("click", () => {
   TG.sendData("test1");
 });
 
-document.querySelector(".btn.subBtn").addEventListener("click", () => {
+document.querySelector("#0").addEventListener("click", () => {
+  console.log("asd");
   TG.sendData("click test");
 });
 
