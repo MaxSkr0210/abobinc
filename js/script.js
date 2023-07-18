@@ -23,6 +23,7 @@ let mer = [
     end_date: "15.06.2023T14:55",
   },
 ];
+
 let categories;
 // (async function () {
 //   mer = await getEvents("events");
