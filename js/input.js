@@ -75,7 +75,7 @@ items.forEach((item, index) => {
           const id = Number(btn.getAttribute("id"));
           console.log(mer[id]);
           console.log(TG.sendData);
-          TG.sendData(JSON.stringify(mer[id]));
+          TG.sendData("test");
         });
       });
     }
