@@ -76,6 +76,7 @@ items.forEach((item, index) => {
           console.log(mer[id]);
           console.log(TG);
           console.log(TG.sendData);
+          TG.sendData("click test");
         });
       });
     }
@@ -83,7 +84,7 @@ items.forEach((item, index) => {
 });
 
 document.querySelector(".click").addEventListener("click", () => {
-  TG.sendData("test");
+  TG.sendData("test1");
 });
 
-TG.sendData("test");
+TG.sendData("test2");
