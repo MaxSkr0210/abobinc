@@ -20,11 +20,13 @@ input.addEventListener("input", async () => {
 });
 
 const search = document.querySelector("#search");
-const arrow = document.querySelector("#bottom_arrow");
+const arrow = document.querySelector("#arrow");
 arrow.addEventListener("click", () => {
   const top = Number(search.style.top.replace("px", ""));
   if (top < -350) {
     search.style.top = -150 + "px";
+  } else {
+    search.style.top = 0 + "px";
   }
 });
 
@@ -66,18 +68,3 @@ items.forEach((item, index) => {
     myMap.geoObjects.add(circle);
   });
 });
-
-document.querySelector(".click").addEventListener("click", () => {
-  TG.sendData("test1");
-});
-
-// const btns = document.querySelectorAll(".btn.subBtn");
-// btns.forEach((btn) => {
-//   btn.addEventListener("click", () => {
-//     const id = Number(btn.getAttribute("id"));
-//     console.log(mer[id]);
-//     console.log(TG);
-//     console.log(TG.sendData);
-//     TG.sendData("click test");
-//   });
-// });

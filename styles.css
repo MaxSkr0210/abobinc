@@ -28,10 +28,6 @@ a {
   /* transition-duration: 1000ms; */
 }
 
-#menu {
-  position: relative;
-}
-
 #radius {
   /* position: relative; */
   bottom: 55px;
@@ -52,7 +48,7 @@ a {
   width: 100%;
   margin-top: 10px;
   position: absolute;
-  top: -235px;
+  bottom: -550px;
   height: 700px;
   background: #fff;
   border: none;
@@ -64,27 +60,13 @@ a {
   position: relative;
 }
 
-#bottom_arrow {
+#arrow {
   position: relative;
   left: 45px;
   top: 5px;
   cursor: pointer;
 }
 
-.slide {
-  width: 39px;
-  height: 9px;
-  margin: 10px auto;
-  border-radius: 10px;
-  cursor: pointer;
-  position: absolute;
-  top: 5px;
-  background: #fcc45d;
-  opacity: 0.5;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
 input {
   display: block;
   margin-left: auto;

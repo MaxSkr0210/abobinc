@@ -3,6 +3,7 @@ let circle;
 let ourCoords;
 let map;
 let categories;
+let up = false;
 
 const deleteControls = [
   "trafficControl",
@@ -107,7 +108,6 @@ function init() {
 const slide = document.querySelector("#slide");
 const slideContainer = document.querySelector("#search");
 const radius = document.querySelector("#radius");
-//mobile
 
 function selectItem(i) {
   const id = Number(i);
@@ -117,49 +117,3 @@ function selectItem(i) {
     }
   });
 }
-
-slide.addEventListener("touchmove", (e) => {
-  var touchLocation = e.targetTouches[0];
-  slideContainer.style.top = touchLocation.pageY - 670 + "px";
-  radius.style.top = touchLocation.pageY - 670 + "px";
-  const num = slideContainer.style.top.replace("px", "");
-  if (Number(num) < -250) {
-    slideContainer.style.top = "-500px";
-  }
-});
-
-//desctop
-slide.onmousedown = (e) => {
-  let coords = getCoords(slideContainer);
-  var shiftY = e.pageY - coords.top;
-  function moveAt(e) {
-    slideContainer.style.top = e.pageY - shiftY - 610 + "px";
-    radius.style.top = e.pageY - shiftY - 620 + "px";
-    const num = slideContainer.style.top.replace("px", "");
-    if (Number(num) < -350) {
-      slideContainer.style.top = "-600px";
-    }
-  }
-
-  document.onmousemove = function (e) {
-    moveAt(e);
-  };
-
-  slideContainer.onmouseup = function () {
-    document.onmousemove = null;
-    slide.onmouseup = null;
-  };
-};
-
-function getCoords(elem) {
-  // кроме IE8-
-  var box = elem.getBoundingClientRect();
-  return {
-    top: box.top + pageYOffset,
-    left: box.left + pageXOffset,
-  };
-}
-
-slide.ondragstart = function () {
-  return false;
-};
