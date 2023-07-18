@@ -1,6 +1,8 @@
 let myMap;
 let circle;
 const list = document.querySelector(".swiper-wrapper");
+let ourCoords;
+let map;
 
 const deleteControls = [
   "trafficControl",
@@ -15,9 +17,9 @@ let mer = [
     event_name: "Событие",
     description: "dfgsdfgsdgsdfg",
     price: 200,
-    address: "г. Москва",
+    address: "СТ Сад 1 Тулагоргаза, 35, Тула",
     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/",
-    start_data: "15.06.2023T14:55",
+    start_date: "15.06.2023T14:55",
     end_date: "15.06.2023T14:55",
   },
 ];
@@ -52,10 +54,12 @@ function init() {
       searchControlProvider: "yandex#search",
     }
   );
+  map = myMap;
+
   deleteControls.forEach((control) => {
     myMap.controls.remove(control);
   });
-  addGeo(myMap, mer);
+  // addGeo(myMap, mer);
   geolocation
     .get({
       provider: "browser",
@@ -64,7 +68,7 @@ function init() {
     .then(function (result) {
       result.geoObjects.options.set("preset", "islands#redCircleIcon");
 
-      const ourCoords = result.geoObjects;
+      ourCoords = result.geoObjects;
       myMap.geoObjects.add(ourCoords);
 
       circle = new ymaps.Circle([ourCoords.position, 200], null, {

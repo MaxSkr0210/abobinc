@@ -1,5 +1,41 @@
+//Найти мероприятия
+const findGeo = (name) => {
+  const arr = [];
+
+  mer.forEach((geo) => {
+    if (geo.description.indexOf(name) >= 0) {
+      arr.push(geo);
+    }
+  });
+
+  return arr;
+};
+
+const mets = [];
+
+//Добавить гео точку
+const addGeo = (map, mer) => {
+  mer.forEach((geo) => {
+    addElement(geo);
+    const newGeo = new ymaps.Placemark(
+      geo.cords,
+      {
+        balloonContent: geo.event_name,
+      },
+      {
+        iconLayout: "default#image",
+        iconImageHref: "images/самовар2.png",
+        iconImageSize: [23, 25],
+      }
+    );
+
+    map.geoObjects.add(newGeo);
+  });
+};
+
 //Добавление элемента на страницу
 const addElement = (data) => {
+  console.log(data);
   const [date_start, time_start] = data.start_date.split("T");
   const [date_end, time_end] = data.end_date.split("T");
   const template = `
@@ -51,47 +87,6 @@ const addElement = (data) => {
     </div>
   </div>
 </div>`;
+
   list.innerHTML += template;
-};
-
-//Найти мероприятия
-const findGeo = (name) => {
-  const arr = [];
-
-  mer.forEach((geo) => {
-    if (geo.description.indexOf(name) >= 0) {
-      arr.push(geo);
-    }
-  });
-
-  return arr;
-};
-
-//Добавить гео точку
-const addGeo = (map, mer) => {
-  mer.forEach((geo) => {
-    // addElement(geo);
-    ymaps.geocode(geo.address).then((res) => {
-      var firstGeoObject = res.geoObjects.get(0);
-      var cords = firstGeoObject.geometry.getCoordinates();
-      coords.push({ id: geo.id, cords });
-      const newGeo = new ymaps.Placemark(
-        cords,
-        {
-          balloonContent: geo.event_name,
-        },
-        {
-          iconLayout: "default#image",
-          iconImageHref: "images/самовар2.png",
-          iconImageSize: [23, 25],
-        }
-      );
-
-      newGeo.events.add("click", function () {
-        alert("О, событие!");
-      });
-
-      map.geoObjects.add(newGeo);
-    });
-  });
 };
