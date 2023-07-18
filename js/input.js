@@ -23,7 +23,7 @@ const search = document.querySelector("#search");
 const arrow = document.querySelector("#arrow");
 arrow.addEventListener("click", () => {
   const top = Number(search.style.top.replace("px", ""));
-  if (top < -200) {
+  if (top > -200) {
     search.style.top = -150 + "px";
   } else {
     search.style.top = 0 + "px";
