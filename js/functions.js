@@ -73,7 +73,7 @@ const addElement = (data) => {
             </div>
           </div>
           <div class="subsribe">
-            <button class="btn subBtn" id="${data.id}">Подписаться</button>
+            <button class="btn subBtn" id="${data.id - 1}">Подписаться</button>
           </div>
         </div>
         <div class="description">
@@ -99,7 +99,7 @@ const addElement = (data) => {
   btns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = btn.getAttribute("id");
-      TG.sendData(mer[id]);
+      TG.sendData(JSON.stringify(mer[id]));
     });
   });
 };
