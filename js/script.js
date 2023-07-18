@@ -3,7 +3,6 @@ let circle;
 let ourCoords;
 let map;
 let categories;
-let up = false;
 
 const deleteControls = [
   "trafficControl",

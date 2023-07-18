@@ -1,3 +1,5 @@
+let up = true;
+
 const input = document.querySelector("input");
 input.addEventListener("input", async () => {
   const data = input.value;
@@ -22,11 +24,12 @@ input.addEventListener("input", async () => {
 const search = document.querySelector("#search");
 const arrow = document.querySelector("#arrow");
 arrow.addEventListener("click", () => {
-  const top = Number(search.style.top.replace("px", ""));
-  if (top > -200) {
-    search.style.top = -150 + "px";
+  if (!up) {
+    search.style.top = 550 + "px";
+    up = true;
   } else {
-    search.style.top = 0 + "px";
+    search.style.top = 0;
+    up = false;
   }
 });
 
