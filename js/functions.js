@@ -35,7 +35,6 @@ const addGeo = (map, mer) => {
 
 //Добавление элемента на страницу
 const addElement = (data) => {
-  console.log(data);
   const [date_start, time_start] = data.start_date.split("T");
   const [date_end, time_end] = data.end_date.split("T");
   const template = `
@@ -74,9 +73,7 @@ const addElement = (data) => {
             </div>
           </div>
           <div class="subsribe">
-            <button class="btn subBtn" id="${
-              data.id - 1
-            } asd">Подписаться</button>
+            <button class="btn subBtn" class="asd">Подписаться</button>
           </div>
         </div>
         <div class="description">
@@ -91,4 +88,14 @@ const addElement = (data) => {
 </div>`;
 
   list.innerHTML += template;
+
+  // document.querySelectorAll(".btn").addEventListener("click", () => {
+  //   console.log("asd");
+  //   TG.sendData("click test");
+  // });
+
+  document.querySelector(".subBtn").addEventListener("click", () => {
+    console.log("asd");
+    TG.sendData("click test");
+  });
 };

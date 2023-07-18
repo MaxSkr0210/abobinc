@@ -71,11 +71,6 @@ document.querySelector(".click").addEventListener("click", () => {
   TG.sendData("test1");
 });
 
-document.querySelector("#asd").addEventListener("click", () => {
-  console.log("asd");
-  TG.sendData("click test");
-});
-
 // const btns = document.querySelectorAll(".btn.subBtn");
 // btns.forEach((btn) => {
 //   btn.addEventListener("click", () => {
