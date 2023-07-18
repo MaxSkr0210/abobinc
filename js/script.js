@@ -22,6 +22,16 @@ let mer = [
     start_date: "15.06.2023T14:55",
     end_date: "15.06.2023T14:55",
   },
+  {
+    id: 2,
+    event_name: "Событие 2",
+    description: "dfgsdfgssasdasddgsdfg",
+    price: 100,
+    address: "Советская улица, 14А, Тула, 300041",
+    img: "https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg",
+    start_date: "15.06.2023T14:55",
+    end_date: "15.06.2023T14:55",
+  },
 ];
 
 let categories;
