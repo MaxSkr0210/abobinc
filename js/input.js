@@ -26,8 +26,10 @@ const arrow = document.querySelector("#arrow");
 arrow.addEventListener("click", () => {
   if (!up) {
     search.style.top = 550 + "px";
+    arrow.style.transform = "rotate(0deg)";
     up = true;
   } else {
+    arrow.style.transform = "rotate(180deg)";
     search.style.top = 0;
     up = false;
   }
