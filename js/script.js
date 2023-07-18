@@ -19,8 +19,8 @@ let mer = [
     price: 200,
     address: "улица Охотный Ряд, 2, Москва, 103265",
     img: "https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg",
-    start_date: "15.06.2023T14:55",
-    end_date: "15.06.2023T14:55",
+    start_date: "15-06-2023T14:55",
+    end_date: "15-06-2023T14:55",
   },
   {
     id: 2,

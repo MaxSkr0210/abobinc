@@ -89,11 +89,6 @@ const addElement = (data) => {
 
   list.innerHTML += template;
 
-  // document.querySelectorAll(".btn").addEventListener("click", () => {
-  //   console.log("asd");
-  //   TG.sendData("click test");
-  // });
-
   const btns = document.querySelectorAll(".subBtn");
 
   btns.forEach((btn) => {
