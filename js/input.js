@@ -64,22 +64,17 @@ items.forEach((item, index) => {
     );
 
     myMap.geoObjects.add(circle);
+  });
+});
 
-    if (Number(items[index].innerText) > 1000) {
-      mer.forEach((m) => {
-        addElement(m);
-      });
-      const btns = document.querySelectorAll(".btn.subBtn");
-      btns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const id = Number(btn.getAttribute("id"));
-          console.log(mer[id]);
-          console.log(TG);
-          console.log(TG.sendData);
-          TG.sendData("click test");
-        });
-      });
-    }
+const btns = document.querySelectorAll(".btn.subBtn");
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const id = Number(btn.getAttribute("id"));
+    console.log(mer[id]);
+    console.log(TG);
+    console.log(TG.sendData);
+    TG.sendData("click test");
   });
 });
 
