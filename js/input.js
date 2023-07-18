@@ -67,6 +67,10 @@ items.forEach((item, index) => {
   });
 });
 
+document.querySelector(".click").addEventListener("click", () => {
+  TG.sendData("test1");
+});
+
 const btns = document.querySelectorAll(".btn.subBtn");
 btns.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -77,9 +81,3 @@ btns.forEach((btn) => {
     TG.sendData("click test");
   });
 });
-
-document.querySelector(".click").addEventListener("click", () => {
-  TG.sendData("test1");
-});
-
-TG.sendData("test2");
