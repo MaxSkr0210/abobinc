@@ -74,7 +74,9 @@ const addElement = (data) => {
             </div>
           </div>
           <div class="subsribe">
-            <button class="btn subBtn" id="${data.id - 1}">Подписаться</button>
+            <button class="btn subBtn" id="${
+              data.id - 1
+            } asd">Подписаться</button>
           </div>
         </div>
         <div class="description">
